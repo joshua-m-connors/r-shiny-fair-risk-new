@@ -40,3 +40,5 @@ Shiny Application Screen:
 
 <img width="1674" height="1348" alt="Screenshot From 2025-11-25 14-10-19" src="https://github.com/user-attachments/assets/b76ceed3-a026-41b4-854a-3afe73faf886" />
 
+
+This is an update to another repository of mine (https://github.com/joshua-m-connors/r-shiny-fair-risk/tree/main) introducing various efficiency and visual improvements.
