@@ -244,6 +244,75 @@ ui <- fluidPage(
           currencyInput("f_oa_si_min_num", "Future Secondary Loss Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
           currencyInput("f_oa_si_max_num", "Future Secondary Loss Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
         )
+      ),
+      # ------------------------------------------------
+      # Secondary Loss by Category
+      # ------------------------------------------------
+      conditionalPanel(
+        condition = "input.sl_radio == 2",
+        
+        h4("- Category-based Secondary Loss"),
+        h5("- Set likelihood and impact ranges per secondary loss category."),
+        
+        h4("Respond/Replace"),
+        sliderInput("rr_sl_slider", h4("- Current Respond/Replace Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+        currencyInput("rr_si_min_num", "Current Respond/Replace Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+        currencyInput("rr_si_max_num", "Current Respond/Replace Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right"),
+        
+        conditionalPanel(
+          condition = "input.future_radio == 2",
+          sliderInput("f_rr_sl_slider", h4("- Future Respond/Replace Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+          currencyInput("f_rr_si_min_num", "Future Respond/Replace Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+          currencyInput("f_rr_si_max_num", "Future Respond/Replace Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
+        ),
+        
+        h4("Lost Productivity"),
+        sliderInput("lp_sl_slider", h4("- Current Lost Productivity Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+        currencyInput("lp_si_min_num", "Current Lost Productivity Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+        currencyInput("lp_si_max_num", "Current Lost Productivity Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right"),
+        
+        conditionalPanel(
+          condition = "input.future_radio == 2",
+          sliderInput("f_lp_sl_slider", h4("- Future Lost Productivity Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+          currencyInput("f_lp_si_min_num", "Future Lost Productivity Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+          currencyInput("f_lp_si_max_num", "Future Lost Productivity Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
+        ),
+        
+        h4("Competitive Advantage"),
+        sliderInput("ca_sl_slider", h4("- Current Competitive Advantage Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+        currencyInput("ca_si_min_num", "Current Competitive Advantage Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+        currencyInput("ca_si_max_num", "Current Competitive Advantage Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right"),
+        
+        conditionalPanel(
+          condition = "input.future_radio == 2",
+          sliderInput("f_ca_sl_slider", h4("- Future Competitive Advantage Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+          currencyInput("f_ca_si_min_num", "Future Competitive Advantage Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+          currencyInput("f_ca_si_max_num", "Future Competitive Advantage Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
+        ),
+        
+        h4("Reputational Damage"),
+        sliderInput("rd_sl_slider", h4("- Current Reputational Damage Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+        currencyInput("rd_si_min_num", "Current Reputational Damage Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+        currencyInput("rd_si_max_num", "Current Reputational Damage Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right"),
+        
+        conditionalPanel(
+          condition = "input.future_radio == 2",
+          sliderInput("f_rd_sl_slider", h4("- Future Reputational Damage Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+          currencyInput("f_rd_si_min_num", "Future Reputational Damage Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+          currencyInput("f_rd_si_max_num", "Future Reputational Damage Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
+        ),
+        
+        h4("Legal/Regulatory"),
+        sliderInput("lr_sl_slider", h4("- Current Legal/Regulatory Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+        currencyInput("lr_si_min_num", "Current Legal/Regulatory Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+        currencyInput("lr_si_max_num", "Current Legal/Regulatory Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right"),
+        
+        conditionalPanel(
+          condition = "input.future_radio == 2",
+          sliderInput("f_lr_sl_slider", h4("- Future Legal/Regulatory Likelihood (%)"), min = 1, max = 100, value = c(1, 10)),
+          currencyInput("f_lr_si_min_num", "Future Legal/Regulatory Impact - Minimum ($)", 5000, format="dollar", width="100%", align="right"),
+          currencyInput("f_lr_si_max_num", "Future Legal/Regulatory Impact - Maximum ($)", 50000, format="dollar", width="100%", align="right")
+        )
       )
     ),
     
@@ -254,6 +323,7 @@ ui <- fluidPage(
       width = 8,
       
       tabsetPanel(
+        selected = "Current Risk",
         
         # ---------------------------------------------------------------------
         # INHERENT RISK TAB – stacked histogram + LEC
